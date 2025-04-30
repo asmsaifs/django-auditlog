@@ -1,0 +1,52 @@
+Metadata-Version: 2.4
+Name: django-auditlog
+Version: 0.1.0
+Summary: Automatic audit logging for Django using LogEntry.
+Home-page: https://github.com/asmsaifs/django-auditlog
+Author: ASM Saiful Islam Chowdhury
+Author-email: asmsaifs@gmail.com
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Django>=3.2
+Requires-Dist: djangorestframework
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# django_auditlog
+
+Django mixin for automatic create/update/delete audit logging using Django's built-in `LogEntry`.
+
+## Features
+
+- Per-field change tracking
+- No extra tables (uses admin.LogEntry)
+- Works with DRF or custom logic
+- Middleware-based user detection
+
+## Installation
+
+```bash
+pip install django_auditlog
+```
+
+## Usage
+
+```python
+from django_auditlog.mixin import AuditLoggerMixin
+
+class Book(AuditLoggerMixin, models.Model):
+    ...
+```

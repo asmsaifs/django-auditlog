@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+django_auditlog/__init__.py
+django_auditlog/apps.py
+django_auditlog/middleware.py
+django_auditlog/mixin.py
+django_auditlog/signals.py
+django_auditlog.egg-info/PKG-INFO
+django_auditlog.egg-info/SOURCES.txt
+django_auditlog.egg-info/dependency_links.txt
+django_auditlog.egg-info/requires.txt
+django_auditlog.egg-info/top_level.txt
