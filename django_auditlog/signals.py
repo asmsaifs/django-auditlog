@@ -9,21 +9,22 @@ from django_auditlog.mixin import AuditLoggerMixin
 def store_original_pre_save(sender, instance, **kwargs):
     if isinstance(instance, AuditLoggerMixin):
         instance.store_original()
-        print("original:", instance.store_original)
+
 
 @receiver(post_save)
 def auto_log_save(sender, instance, created, **kwargs):
     if not issubclass(sender, AuditLoggerMixin):
         return
     if created:
-        instance.log_change(ADDITION, 'Auto-created')
+        instance.log_change(ADDITION, "Auto-created")
     else:
-        if hasattr(instance, '_original_values'):
+        if hasattr(instance, "_original_values"):
             diffs = instance.get_field_diff()
             msg = "; ".join(f"{k}: {v['from']} → {v['to']}" for k, v in diffs.items())
         else:
-            msg = 'Auto-updated'
+            msg = "Auto-updated"
         instance.log_change(CHANGE, msg)
+
 
 @receiver(post_delete)
 def auto_log_delete(sender, instance, **kwargs):
