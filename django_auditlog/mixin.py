@@ -9,7 +9,7 @@ class AuditLoggerMixin(models.Model):
         abstract = True
 
     def store_original(self):
-        instance = self._meta.model.objects.get(pk=self.id)
+        instance = self._meta.model.objects.get(pk=self.pk)
         self._original_values = {
             field.name: getattr(instance, field.name) for field in self._meta.fields
         }
