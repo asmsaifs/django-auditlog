@@ -1,7 +1,15 @@
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import pre_save, post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from django.contrib.admin.models import ADDITION, CHANGE, DELETION
 from django_auditlog.mixin import AuditLoggerMixin
+
+
+@receiver(pre_save)
+@receiver(pre_delete)
+def store_original_pre_save(sender, instance, **kwargs):
+    if isinstance(instance, AuditLoggerMixin):
+        instance.store_original()
+        print("original:", instance.store_original)
 
 @receiver(post_save)
 def auto_log_save(sender, instance, created, **kwargs):
