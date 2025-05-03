@@ -9,10 +9,11 @@ class AuditLoggerMixin(models.Model):
         abstract = True
 
     def store_original(self):
-        instance = self._meta.model.objects.get(pk=self.pk)
-        self._original_values = {
-            field.name: getattr(instance, field.name) for field in self._meta.fields
-        }
+        instance = self._meta.model.objects.filter(pk=self.pk).first()
+        if instance is not None:
+            self._original_values = {
+                field.name: getattr(instance, field.name) for field in self._meta.fields
+            }
 
     def get_field_diff(self):
         diffs = {}

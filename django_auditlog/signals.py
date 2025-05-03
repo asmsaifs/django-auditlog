@@ -7,7 +7,7 @@ from django_auditlog.mixin import AuditLoggerMixin
 @receiver(pre_save)
 @receiver(pre_delete)
 def store_original_pre_save(sender, instance, **kwargs):
-    if isinstance(instance, AuditLoggerMixin):
+    if isinstance(instance, AuditLoggerMixin) and instance.pk is not None:
         instance.store_original()
 
 
