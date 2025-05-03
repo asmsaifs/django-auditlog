@@ -7,7 +7,6 @@ Author: ASM Saiful Islam Chowdhury
 Author-email: asmsaifs@gmail.com
 Classifier: Framework :: Django
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
